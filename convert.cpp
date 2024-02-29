@@ -16,18 +16,18 @@
 int main(int argc, char* argv[]) {
 
     // requires conversion option and string
-    // @concern
+    // @concern input format, argc, argv, error handling, std::cerr
     if (argc != 3) {
         std::cerr << "usage: " << argv[0] << " <option> <string>\n";
         return 1;
     }
 
     // conversion option
-    // @concern
+    // @concern input format, argv, std::string, option[out]
     std::string option(argv[1]);
 
     // input text
-    // @concern
+    // @concern input format, argv, std::string, text[out]
     std::string text(argv[2]);
 
     // convert the string according to the option
