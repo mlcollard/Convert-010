@@ -27,8 +27,18 @@ bool isOptionUpper(const std::string& s) {
 
 // output character to standard output
 // @concern output format, std::cout, output[out]
-void output(char c) {
+void output(char& c) {
     std::cout << c;
+}
+
+// Conversion function type
+typedef void (*Conversion)(char& c);
+
+// @concern std::string, iteration, apply, myforeach[out]
+void myforeach(std::string::iterator begin, std::string::iterator end, Conversion apply) {
+
+    for (auto pc = begin; pc != end; ++pc)
+        apply(*pc);
 }
 
 int main(int argc, char* argv[]) {
@@ -69,9 +79,8 @@ int main(int argc, char* argv[]) {
     }
 
     // output converted text
-    // @concern output format, text, std::string, iteration, output()
-    for (auto pc = text.cbegin(); pc != text.cend(); ++pc)
-        output(*pc);
+    // @concern output format, text, output(), myforeach()
+    myforeach(text.begin(), text.end(), output);
     std::cout << '\n';
 
     return 0;
