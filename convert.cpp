@@ -13,7 +13,7 @@
 #include <string>
 #include <cctype>
 
-// @concern "--lower"
+// @concern "--lower", isOptionLower[out]
 bool isOptionLower(const std::string& s) {
 
     return s == "--lower";
