@@ -31,9 +31,9 @@ int main(int argc, char* argv[]) {
     std::string text(argv[2]);
 
     // convert the string according to the option
-    // @concern
-    // @concern
-    // @concern
+    // @concern option, text, "--upper", "--lower"
+    // @concern std::string, std::toupper(), std::tolower(), iteration
+    // @concern error handling, std::cerr
     if (option == "--upper") {
 
         for (auto pc = text.begin(); pc != text.end(); ++pc)
@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
     }
 
     // output converted text
-    // @concern
+    // @concern output format, text, std::string, iteration, std::cout
     for (auto pc = text.cbegin(); pc != text.cend(); ++pc)
         std::cout << *pc;
     std::cout << '\n';
