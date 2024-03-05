@@ -25,6 +25,12 @@ bool isOptionUpper(const std::string& s) {
     return s == "--upper";
 }
 
+// output character to standard output
+// @concern output format, std::cout, output[out]
+void output(char c) {
+    std::cout << c;
+}
+
 int main(int argc, char* argv[]) {
 
     // requires conversion option and string
@@ -63,9 +69,9 @@ int main(int argc, char* argv[]) {
     }
 
     // output converted text
-    // @concern output format, text, std::string, iteration, std::cout
+    // @concern output format, text, std::string, iteration, output()
     for (auto pc = text.cbegin(); pc != text.cend(); ++pc)
-        std::cout << *pc;
+        output(*pc);
     std::cout << '\n';
 
     return 0;
