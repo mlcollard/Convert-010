@@ -13,6 +13,12 @@
 #include <string>
 #include <cctype>
 
+// @concern "--lower"
+bool isOptionLower(const std::string& s) {
+
+    return s == "--lower";
+}
+
 int main(int argc, char* argv[]) {
 
     // requires conversion option and string
@@ -31,7 +37,7 @@ int main(int argc, char* argv[]) {
     std::string text(argv[2]);
 
     // convert the string according to the option
-    // @concern option, text, "--upper", "--lower"
+    // @concern option, text, "--upper", isOptionLower()
     // @concern std::string, std::toupper(), std::tolower(), iteration
     // @concern error handling, std::cerr
     if (option == "--upper") {
@@ -39,7 +45,7 @@ int main(int argc, char* argv[]) {
         for (auto pc = text.begin(); pc != text.end(); ++pc)
             *pc = std::toupper(*pc);
 
-    } else if (option == "--lower") {
+    } else if (isOptionLower(option)) {
 
         for (auto pc = text.begin(); pc != text.end(); ++pc)
             *pc = std::tolower(*pc);
