@@ -30,6 +30,11 @@ void toUpper(char& c) {
     c = std::toupper(c);
 }
 
+// @concern std::tolower(), toLower[out]
+void toLower(char& c) {
+    c = std::tolower(c);
+}
+
 // output character to standard output
 // @concern output format, std::cout, output[out]
 void output(char& c) {
@@ -75,7 +80,7 @@ int main(int argc, char* argv[]) {
     } else if (isOptionLower(option)) {
 
         for (auto pc = text.begin(); pc != text.end(); ++pc)
-            *pc = std::tolower(*pc);
+            toLower(*pc);
 
     } else {
 
