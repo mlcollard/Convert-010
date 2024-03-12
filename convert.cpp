@@ -14,28 +14,6 @@
 #include <cctype>
 #include <unordered_map>
 
-// @concern "--lower", isOptionLower[out]
-bool isOptionLower(const std::string& s) {
-
-    return s == "--lower";
-}
-
-// @concern "--upper", isOptionUpper[out]
-bool isOptionUpper(const std::string& s) {
-
-    return s == "--upper";
-}
-
-// @concern std::toupper(), toUpper[out]
-void toUpper(char& c) {
-    c = std::toupper(c);
-}
-
-// @concern std::tolower(), toLower[out]
-void toLower(char& c) {
-    c = std::tolower(c);
-}
-
 // output character to standard output
 // @concern output format, std::cout, output[out]
 void output(char& c) {
@@ -48,8 +26,8 @@ typedef void (*Conversion)(char& c);
 // option to conversion mapping
 // @concern "--upper", "--lower", toUpper(), toLower(), conversionOption[out]
 std::unordered_map<std::string, Conversion> conversionOption{
-    { "--upper", toUpper },
-    { "--lower", toLower },
+    { "--upper", [](char& c) { c = std::toupper(c); } },
+    { "--lower", [](char& c) { c = std::tolower(c); } },
 };
 
 // @concern std::string, iteration, apply, myforeach[out]
