@@ -70,17 +70,15 @@ int main(int argc, char* argv[]) {
 
     // convert the string according to the option
     // @concern option, text, isOptionUpper(), isOptionLower()
-    // @concern std::string, toUpper(), std::tolower(), iteration
+    // @concern std::string, toUpper(), toLower()
     // @concern error handling, std::cerr
     if (isOptionUpper(option)) {
 
-        for (auto pc = text.begin(); pc != text.end(); ++pc)
-            toUpper(*pc);
+        myforeach(text.begin(), text.end(), toUpper);
 
     } else if (isOptionLower(option)) {
 
-        for (auto pc = text.begin(); pc != text.end(); ++pc)
-            toLower(*pc);
+        myforeach(text.begin(), text.end(), toLower);
 
     } else {
 
