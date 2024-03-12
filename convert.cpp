@@ -12,6 +12,7 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include <unordered_map>
 
 // @concern "--lower", isOptionLower[out]
 bool isOptionLower(const std::string& s) {
@@ -44,6 +45,13 @@ void output(char& c) {
 // Conversion function type
 typedef void (*Conversion)(char& c);
 
+// option to conversion mapping
+// @concern "--upper", "--lower", toUpper(), toLower(), conversionOption[out]
+std::unordered_map<std::string, Conversion> conversionOption{
+    { "--upper", toUpper },
+    { "--lower", toLower },
+};
+
 // @concern std::string, iteration, apply, myforeach[out]
 void myforeach(std::string::iterator begin, std::string::iterator end, Conversion apply) {
 
@@ -69,23 +77,14 @@ int main(int argc, char* argv[]) {
     std::string text(argv[2]);
 
     // convert the string according to the option
-    // @concern option, isOptionUpper(), isOptionLower()
-    // @concern std::string, toUpper(), toLower()
+    // @concern option, conversionOption[out]
     // @concern error handling, std::cerr
-    Conversion convert = nullptr;
-    if (isOptionUpper(option)) {
-
-        convert = toUpper;
-
-    } else if (isOptionLower(option)) {
-
-        convert = toLower;
-
-    } else {
-
+    auto conversionEntry = conversionOption.find(option);
+    if (conversionEntry == conversionOption.end()) {
         std::cerr << "Invalid conversion option: " << option << '\n';
         return 1;
     }
+    auto convert = conversionEntry->second;
 
     // convert the string according to the conversion function
     // @concern myforeach(), text
