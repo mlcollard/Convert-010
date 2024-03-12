@@ -25,6 +25,11 @@ bool isOptionUpper(const std::string& s) {
     return s == "--upper";
 }
 
+// @concern std::toupper(), toUpper[out]
+void toUpper(char& c) {
+    c = std::toupper(c);
+}
+
 // output character to standard output
 // @concern output format, std::cout, output[out]
 void output(char& c) {
@@ -60,12 +65,12 @@ int main(int argc, char* argv[]) {
 
     // convert the string according to the option
     // @concern option, text, isOptionUpper(), isOptionLower()
-    // @concern std::string, std::toupper(), std::tolower(), iteration
+    // @concern std::string, toUpper(), std::tolower(), iteration
     // @concern error handling, std::cerr
     if (isOptionUpper(option)) {
 
         for (auto pc = text.begin(); pc != text.end(); ++pc)
-            *pc = std::toupper(*pc);
+            toUpper(*pc);
 
     } else if (isOptionLower(option)) {
 
