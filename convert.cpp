@@ -69,22 +69,27 @@ int main(int argc, char* argv[]) {
     std::string text(argv[2]);
 
     // convert the string according to the option
-    // @concern option, text, isOptionUpper(), isOptionLower()
+    // @concern option, isOptionUpper(), isOptionLower()
     // @concern std::string, toUpper(), toLower()
     // @concern error handling, std::cerr
+    Conversion convert = nullptr;
     if (isOptionUpper(option)) {
 
-        myforeach(text.begin(), text.end(), toUpper);
+        convert = toUpper;
 
     } else if (isOptionLower(option)) {
 
-        myforeach(text.begin(), text.end(), toLower);
+        convert = toLower;
 
     } else {
 
         std::cerr << "Invalid conversion option: " << option << '\n';
         return 1;
     }
+
+    // convert the string according to the conversion function
+    // @concern myforeach(), text
+    myforeach(text.begin(), text.end(), convert);
 
     // output converted text
     // @concern output format, text, output(), myforeach()
